@@ -7,7 +7,7 @@ Image=funkwhale/api:2.0.3
 Pod=funkwhale.pod
 Environment=C_FORCE_ROOT=true
 EnvironmentFile=/etc/funkwhale.env
-EnvironmentFile=%h/.config/funkwhale-secrets.env
+EnvironmentFile=%h/.config/funkwhale-extra.env
 Exec=celery '--app=funkwhale_api.taskapp' worker '--loglevel=INFO' '--concurrency=${CELERYD_CONCURRENCY-0}'
 Volume=funkwhale-music:/music:ro
 Volume=funkwhale-media:/media
