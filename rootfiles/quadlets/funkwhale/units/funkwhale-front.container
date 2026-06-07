@@ -1,0 +1,15 @@
+[Unit]
+Requires=funkwhale-api.service
+After=funkwhale-api.service
+
+[Container]
+Image=funkwhale/front:2.0.3
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Volume=funkwhale-music:/music:ro
+Volume=funkwhale-media:/media:ro
+Volume=funkwhale-static:/usr/share/nginx/html/staticfiles:ro
+
+[Service]
+Restart=always

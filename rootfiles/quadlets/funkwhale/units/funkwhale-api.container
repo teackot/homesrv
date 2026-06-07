@@ -1,0 +1,15 @@
+[Unit]
+Requires=funkwhale-postgres.service funkwhale-redis.service
+After=funkwhale-postgres.service funkwhale-redis.service
+
+[Container]
+Image=funkwhale/api:2.0.3
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Volume=funkwhale-music:/music:ro
+Volume=funkwhale-media:/media
+Volume=funkwhale-static:/static
+
+[Service]
+Restart=always

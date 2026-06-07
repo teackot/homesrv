@@ -1,0 +1,10 @@
+[Container]
+Image=typesense/typesense:0.24.0
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Exec=--data-dir /data --enable-cors
+Volume=funkwhale-typesense-data:/data
+
+[Service]
+Restart=always

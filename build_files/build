@@ -11,7 +11,6 @@ dnf -y install zram-generator-defaults
 dnf -y install firewalld fail2ban
 sed -i 's|DefaultZone=public|DefaultZone=custom|' /etc/firewalld/firewalld.conf
 
-dnf -y install tmux vim fish
+dnf -y install tmux vim fish tree
 
-# to fend off lazy botnets probing the 22nd port
-semanage port -a -t ssh_port_t -p tcp 1022
+env --chdir=/ctx/rootfiles/quadlets/funkwhale ./setup

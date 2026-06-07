@@ -1,0 +1,10 @@
+[Container]
+Image=postgres:15-alpine
+Pod=funkwhale.pod
+Environment=POSTGRES_HOST_AUTH_METHOD=trust
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Volume=funkwhale-postgres-data:/var/lib/postgresql/data
+
+[Service]
+Restart=always

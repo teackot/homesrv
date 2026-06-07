@@ -1,0 +1,9 @@
+[Container]
+Image=redis:7-alpine
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Volume=funkwhale-redis-data:/data
+
+[Service]
+Restart=always

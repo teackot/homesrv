@@ -1,0 +1,13 @@
+[Unit]
+Requires=funkwhale-postgres.service funkwhale-redis.service
+After=funkwhale-postgres.service funkwhale-redis.service
+
+[Container]
+Image=funkwhale/api:2.0.3
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-secrets.env
+Exec=celery '--app=funkwhale_api.taskapp' beat '--loglevel=INFO'
+
+[Service]
+Restart=always
