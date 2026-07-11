@@ -3,5 +3,9 @@
   <short>Custom</short>
   <service name="dhcpv6-client"/>
   <service name="ssh"/>
+  <rule family="ipv4">
+    <forward-port port="80" protocol="tcp" to-port="8080"/>
+    <forward-port port="443" protocol="tcp" to-port="8443"/>
+  </rule>
   <forward/>
 </zone>
