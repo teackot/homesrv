@@ -8,8 +8,8 @@ Pod=funkwhale.pod
 EnvironmentFile=/etc/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
 Exec=gunicorn
-Volume=funkwhale-music:/music:ro
-Volume=funkwhale-media:/media
+Volume=%h/.local/mnt/funkwhale-music:/music:ro
+Volume=%h/.local/mnt/funkwhale-media:/media
 Volume=funkwhale-static:/static
 
 [Service]

@@ -9,8 +9,8 @@ Environment=C_FORCE_ROOT=true
 EnvironmentFile=/etc/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
 Exec=celery '--app=funkwhale_api.taskapp' worker '--loglevel=INFO' '--concurrency=0'
-Volume=funkwhale-music:/music:ro
-Volume=funkwhale-media:/media
+Volume=%h/.local/mnt/funkwhale-music:/music:ro
+Volume=%h/.local/mnt/funkwhale-media:/media
 
 [Service]
 Restart=always

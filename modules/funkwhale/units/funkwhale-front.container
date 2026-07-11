@@ -7,8 +7,8 @@ Image=funkwhale/front:2.0.3
 Pod=funkwhale.pod
 EnvironmentFile=/etc/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
-Volume=funkwhale-music:/music:ro
-Volume=funkwhale-media:/media:ro
+Volume=%h/.local/mnt/funkwhale-music:/music:ro
+Volume=%h/.local/mnt/funkwhale-media:/media:ro
 Volume=funkwhale-static:/usr/share/nginx/html/staticfiles:ro
 
 [Service]
