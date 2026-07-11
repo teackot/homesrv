@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-useradd --system --shell /usr/bin/bash --home-dir /var/home/funkwhale funkwhale
-FUNKWHALE_UID=$(id -u funkwhale)
-
-install -Dm644 sysusers.conf /usr/lib/sysusers.d/funkwhale.conf
-install -Dm644 tmpfiles.conf /usr/lib/tmpfiles.d/funkwhale.conf
-
-mkdir -p /usr/share/containers/systemd/users/$FUNKWHALE_UID
-cp units/* /usr/share/containers/systemd/users/$FUNKWHALE_UID/
+mkdir -p /etc/containers/systemd/users/1000
+cp units/* /etc/containers/systemd/users/1000/
 cp funkwhale.env /etc
