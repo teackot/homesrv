@@ -18,12 +18,12 @@ bib_config := env("BUILD_BIB_CONFIG", "./bootc-image-builder.toml")
 rootfs := env("BUILD_ROOTFS", "btrfs")
 
 pull:
-    sudo podman pull {{base}}
+    podman pull {{base}}
     podman pull quay.io/coreos/chunkah
-    sudo podman pull {{registry}}/{{image}}:{{tag}} || true
+    podman pull {{registry}}/{{image}}:{{tag}} || true
 
 build *ARGS:
-    sudo buildah bud \
+    buildah bud \
         --layers=true \
         --skip-unused-stages=false \
         --build-arg="CHUNKAH_CONFIG_STR=$(podman inspect {{registry}}/{{image}}:{{tag}})" \
