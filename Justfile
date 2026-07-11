@@ -17,10 +17,20 @@ disk_type := env("BUILD_DISK_TYPE", "iso")
 bib_config := env("BUILD_BIB_CONFIG", "./bootc-image-builder.toml")
 rootfs := env("BUILD_ROOTFS", "btrfs")
 
-pull:
-    podman pull {{base}}
-    podman pull quay.io/coreos/chunkah
-    podman pull {{registry}}/{{image}}:{{tag}} || true
+[private]
+pull-base *ARGS:
+    podman pull {{ARGS}} {{base}}
+
+[private]
+pull-chunkah *ARGS:
+    podman pull {{ARGS}} quay.io/coreos/chunkah
+
+[private]
+pull-img *ARGS:
+    podman pull {{ARGS}} {{registry}}/{{image}}:{{tag}}
+
+[parallel]
+pull *ARGS: (pull-base ARGS) (pull-chunkah ARGS) (pull-img ARGS)
 
 build *ARGS:
     buildah bud \
