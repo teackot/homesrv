@@ -8,10 +8,11 @@ dnf -y install qemu-guest-agent
 
 dnf -y install zram-generator-defaults
 
-dnf -y install firewalld fail2ban
-sed -i 's|DefaultZone=public|DefaultZone=custom|' /etc/firewalld/firewalld.conf
+dnf -y install fail2ban
 
 dnf -y install tmux vim fish tree
 dnf -y install systemd-container # for machinectl
 
-env --chdir=/ctx/rootfiles/quadlets/funkwhale ./setup
+for m in /ctx/modules/*/ ; do
+    env --chdir="$m" ./build
+done

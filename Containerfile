@@ -2,15 +2,12 @@ ARG CHUNKAH_CONFIG_STR
 
 FROM scratch AS ctx
 COPY build_files /build_files
-COPY rootfiles /rootfiles
+COPY modules /modules
 
 FROM quay.io/fedora/fedora-bootc:44 as builder
 
-COPY rootfiles/sshd/* /etc/ssh/sshd_config.d/
-COPY rootfiles/firewalld/* /usr/lib/firewalld/zones/
-
 RUN --mount=type=bind,from=ctx,source=/build_files,target=/ctx \
-    --mount=type=bind,from=ctx,source=/rootfiles,target=/ctx/rootfiles \
+    --mount=type=bind,from=ctx,source=/modules,target=/ctx/modules \
     --mount=type=cache,target=/var/cache \
     /ctx/build && \
     /ctx/cleanup && \
