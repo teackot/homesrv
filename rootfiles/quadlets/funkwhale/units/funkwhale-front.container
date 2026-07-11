@@ -3,7 +3,7 @@ Requires=funkwhale-api.service
 After=funkwhale-api.service
 
 [Container]
-Image=funkwhale/front@sha256:4fda3530dc18d98cebed65af6f460c406a0b08d4bcf3dd5daa47928ed01555d5
+Image=funkwhale/front:2.0.3
 Pod=funkwhale.pod
 EnvironmentFile=/etc/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
