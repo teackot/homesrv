@@ -19,21 +19,19 @@ rootfs := env("BUILD_ROOTFS", "btrfs")
 
 pull:
     sudo podman pull {{base}}
+    podman pull quay.io/coreos/chunkah
     sudo podman pull {{registry}}/{{image}}:{{tag}} || true
 
 build *ARGS:
     sudo buildah bud \
         --layers=true \
+        --skip-unused-stages=false \
+        --build-arg="CHUNKAH_CONFIG_STR=$(podman inspect {{registry}}/{{image}}:{{tag}})" \
+        -v=$(pwd):/run/src \
+        --security-opt=label=disable \
         {{ARGS}} \
-        -t "{{registry}}/{{image}}:{{tag}}{{build_suffix}}" \
+        -t "{{registry}}/{{image}}:{{tag}}" \
         "."
-
-rechunk *ARGS:
-    sudo podman run --rm --privileged -v /var/lib/containers:/var/lib/containers {{ARGS}} \
-        {{base}} \
-        /usr/libexec/bootc-base-imagectl rechunk \
-        {{registry}}/{{image}}:{{tag}}{{build_suffix}} \
-        {{registry}}/{{image}}:{{tag}}
 
 prepare_interactive:
     cp ./anaconda-interactive.toml "{{bib_config}}"
