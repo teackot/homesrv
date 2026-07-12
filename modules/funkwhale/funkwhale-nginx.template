@@ -40,8 +40,8 @@ server {
     ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
     ssl_prefer_server_ciphers on;
     ssl_session_cache shared:SSL:10m;
-    ssl_certificate     /etc/letsencrypt/live/${FUNKWHALE_HOSTNAME}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/${FUNKWHALE_HOSTNAME}/privkey.pem;
+    ssl_certificate     /etc/certs/funkwhale-fullchain.pem;
+    ssl_certificate_key /etc/certs/funkwhale-privkey.pem;
 
     # HSTS
     add_header Strict-Transport-Security "max-age=31536000";

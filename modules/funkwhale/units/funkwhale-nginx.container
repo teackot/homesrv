@@ -11,8 +11,8 @@ Volume=/etc/funkwhale-nginx.template:/etc/nginx/templates/default.conf.template:
 Volume=/etc/funkwhale_proxy.conf:/etc/nginx/funkwhale_proxy.conf:ro
 
 # Certificates
-Volume=%h/.local/share/funkwhale/certs/fullchain.pem:/etc/letsencrypt/live/funkwhale.funkwhale/fullchain.pem:Z,ro
-Volume=%h/.local/share/funkwhale/certs/privkey.pem:/etc/letsencrypt/live/funkwhale.funkwhale/privkey.pem:Z,ro
+Volume=%h/.local/share/funkwhale/certs/fullchain.pem:/etc/certs/funkwhale-fullchain.pem:Z,ro
+Volume=%h/.local/share/funkwhale/certs/privkey.pem:/etc/certs/funkwhale-privkey.pem:Z,ro
 
 [Service]
 Restart=always
