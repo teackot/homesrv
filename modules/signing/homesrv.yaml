@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/teackot:
+    use-sigstore-attachments: true
