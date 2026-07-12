@@ -43,6 +43,9 @@ build *ARGS:
         -t "{{registry}}/{{image}}:{{tag}}" \
         "."
 
+sign digest:
+    cosign sign -y --new-bundle-format=false --use-signing-config=false --key env://SIGNING_KEY "{{registry}}/{{image}}@{{digest}}"
+
 prepare_interactive:
     cp ./anaconda-interactive.toml "{{bib_config}}"
     sed -i 's#@IMAGE@#{{registry}}/{{image}}:{{tag}}#' "{{bib_config}}"
