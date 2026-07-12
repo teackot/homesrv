@@ -1,11 +1,10 @@
-An atomic bootc image for my home server
+An atomic bootc image for my home server with Funkwhale!
 
 Build a container image locally:
 
 ```bash
-sudo just pull # (optional)
-sudo just build
-sudo just rechunk
+just pull # (optional)
+just build
 ```
 
 Build an interactive Anaconda installer ISO image:
