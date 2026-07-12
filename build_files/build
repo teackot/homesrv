@@ -13,6 +13,11 @@ dnf -y install fail2ban
 dnf -y install tmux vim fish tree
 dnf -y install systemd-container # for machinectl
 
+# For some reason nothing pulls network-online.target
+# if this service isn't enabled...
+# The service itself won't start due to an unmet condition
+systemctl enable dnf5-makecache.timer
+
 for m in /ctx/modules/*/ ; do
     env --chdir="$m" ./build
 done
