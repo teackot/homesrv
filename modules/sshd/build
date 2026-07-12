@@ -2,5 +2,5 @@
 
 set -xeuo pipefail
 
-install -m600 20-deny_root.conf /etc/ssh/sshd_config.d/20-deny_root.conf
-install -m600 20-force_publickey_auth.conf /etc/ssh/sshd_config.d/20-force_publickey_auth.conf
+install -Dm600 20-deny_root.conf /etc/ssh/sshd_config.d
+install -Dm600 20-force_publickey_auth.conf /etc/ssh/sshd_config.d
