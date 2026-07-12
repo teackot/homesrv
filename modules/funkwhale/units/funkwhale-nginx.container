@@ -3,12 +3,12 @@ Image=docker.io/library/nginx
 Pod=funkwhale.pod
 
 # Funkwhale config
-EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=/etc/funkwhale/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
 
 # Nginx config
-Volume=/etc/funkwhale-nginx.template:/etc/nginx/templates/default.conf.template:ro
-Volume=/etc/funkwhale_proxy.conf:/etc/nginx/funkwhale_proxy.conf:ro
+Volume=/etc/funkwhale/funkwhale-nginx.template:/etc/nginx/templates/default.conf.template:ro
+Volume=/etc/funkwhale/funkwhale_proxy.conf:/etc/nginx/funkwhale_proxy.conf:ro
 
 # Certificates
 Volume=%h/.local/share/funkwhale/certs/fullchain.pem:/etc/certs/funkwhale-fullchain.pem:Z,ro

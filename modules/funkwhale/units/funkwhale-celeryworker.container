@@ -6,11 +6,11 @@ After=funkwhale-postgres.service funkwhale-redis.service
 Image=funkwhale/api:2.0.3
 Pod=funkwhale.pod
 Environment=C_FORCE_ROOT=true
-EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=/etc/funkwhale/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
 Exec=celery '--app=funkwhale_api.taskapp' worker '--loglevel=INFO' '--concurrency=0'
-Volume=%h/.local/mnt/funkwhale-music:/music:z,ro
-Volume=%h/.local/mnt/funkwhale-media:/media:z
+Volume=%h/.local/share/funkwhale/volumes/funkwhale-music:/music:z,ro
+Volume=%h/.local/share/funkwhale/volumes/funkwhale-media:/media:z
 
 [Service]
 Restart=always

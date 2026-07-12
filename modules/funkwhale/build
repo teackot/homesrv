@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir -p /etc/containers/systemd/users/1000
-cp units/* /etc/containers/systemd/users/1000/
-cp funkwhale.env /etc
-cp funkwhale-nginx.template /etc
-cp funkwhale_proxy.conf /etc
+set -uexo pipefail
+
+install -Dm644 -t /etc/containers/systemd/users/1000 units/*
+
+install -Dm644 ./funkwhale.env -t /etc/funkwhale
+install -Dm644 ./funkwhale-nginx.template -t /etc/funkwhale
+install -Dm644 ./funkwhale_proxy.conf -t /etc/funkwhale

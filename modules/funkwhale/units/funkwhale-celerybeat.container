@@ -5,7 +5,7 @@ After=funkwhale-postgres.service funkwhale-redis.service
 [Container]
 Image=funkwhale/api:2.0.3
 Pod=funkwhale.pod
-EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=/etc/funkwhale/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
 Exec=celery '--app=funkwhale_api.taskapp' beat '--loglevel=INFO'
 
