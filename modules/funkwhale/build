@@ -3,3 +3,5 @@
 mkdir -p /etc/containers/systemd/users/1000
 cp units/* /etc/containers/systemd/users/1000/
 cp funkwhale.env /etc
+cp funkwhale-nginx.template /etc
+cp funkwhale_proxy.conf /etc

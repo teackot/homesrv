@@ -1,0 +1,10 @@
+[Container]
+Image=docker.io/library/nginx
+Pod=funkwhale.pod
+EnvironmentFile=/etc/funkwhale.env
+EnvironmentFile=%h/.config/funkwhale-extra.env
+Volume=/etc/funkwhale-nginx.template:/etc/nginx/templates/default.conf.template:Z,ro
+Volume=/etc/funkwhale_proxy.conf:/etc/nginx/funkwhale_proxy.conf:Z,ro
+
+[Service]
+Restart=always
