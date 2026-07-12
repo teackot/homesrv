@@ -3,7 +3,7 @@ Requires=funkwhale-postgres.service funkwhale-redis.service
 After=funkwhale-postgres.service funkwhale-redis.service
 
 [Container]
-Image=funkwhale/api:2.0.3
+Image=funkwhale-api.image
 Pod=funkwhale.pod
 EnvironmentFile=/etc/funkwhale/funkwhale.env
 EnvironmentFile=%h/.config/funkwhale-extra.env
