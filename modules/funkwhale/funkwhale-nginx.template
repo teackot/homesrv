@@ -1,5 +1,5 @@
 upstream fw {
-    server ${FUNKWHALE_API_IP}:${FUNKWHALE_API_PORT};
+    server ${FUNKWHALE_API_IP}:80;
 }
 
 # Required for websocket support.
