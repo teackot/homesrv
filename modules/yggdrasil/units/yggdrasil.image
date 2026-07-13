@@ -1,0 +1,3 @@
+[Image]
+Image=ghcr.io/yggdrasil-network/yggdrasil-go:latest
+Policy=newer

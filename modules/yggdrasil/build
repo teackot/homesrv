@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -uexo pipefail
+
+install -Dm644 -t /usr/share/containers/systemd/yggdrasil units/*
+install -m644 tmpfiles.conf /usr/lib/tmpfiles.d/yggdrasil.conf
