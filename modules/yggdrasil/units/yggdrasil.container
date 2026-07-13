@@ -3,7 +3,7 @@ Image=yggdrasil.image
 Network=host
 AddCapability=NET_ADMIN
 AddDevice=/dev/net/tun
-Volume=/var/lib/yggdrasil:/etc/yggdrasil-network
+Volume=/var/lib/yggdrasil:/etc/yggdrasil-network:Z
 
 [Service]
 Restart=always
